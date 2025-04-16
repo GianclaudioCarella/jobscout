@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "../jobscout-frontend/static/css/main.e298bdf7.css",
-    "main.js": "../jobscout-frontend/static/js/main.1103bac1.js",
-    "static/js/453.9fdb73a3.chunk.js": "../jobscout-frontend/static/js/453.9fdb73a3.chunk.js",
-    "static/media/robo.jpeg": "../jobscout-frontend/static/media/robo.afad998dc074fa761a5b.jpeg",
-    "index.html": "../jobscout-frontend/index.html",
-    "main.e298bdf7.css.map": "../jobscout-frontend/static/css/main.e298bdf7.css.map",
-    "main.1103bac1.js.map": "../jobscout-frontend/static/js/main.1103bac1.js.map",
-    "453.9fdb73a3.chunk.js.map": "../jobscout-frontend/static/js/453.9fdb73a3.chunk.js.map"
+    "main.css": "/static/css/main.e298bdf7.css",
+    "main.js": "/static/js/main.175eef75.js",
+    "static/js/453.9fdb73a3.chunk.js": "/static/js/453.9fdb73a3.chunk.js",
+    "static/media/robo.jpeg": "/static/media/robo.afad998dc074fa761a5b.jpeg",
+    "index.html": "/index.html",
+    "main.e298bdf7.css.map": "/static/css/main.e298bdf7.css.map",
+    "main.175eef75.js.map": "/static/js/main.175eef75.js.map",
+    "453.9fdb73a3.chunk.js.map": "/static/js/453.9fdb73a3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e298bdf7.css",
-    "static/js/main.1103bac1.js"
+    "static/js/main.175eef75.js"
   ]
 }

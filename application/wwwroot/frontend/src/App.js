@@ -1,4 +1,4 @@
-import logo from './robo.jpeg';
+import logo from './img/agent.jpeg';
 import './App.css';
 
 function App() {

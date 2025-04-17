@@ -18,6 +18,16 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
-  </ItemGroup>
+    <Content Update="appsettings.Development.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    
+    </ItemGroup>
 
+    <Target Name="CopyFolder" AfterTargets="Build">
+      <Exec Command="robocopy ../presentation/public $(OutputPath)wwwroot" />
+    </Target>
 </Project>

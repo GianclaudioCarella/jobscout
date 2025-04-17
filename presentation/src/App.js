@@ -55,7 +55,7 @@ function FormPage() {
  return (
    <div className="App">
      <header className="App-header">
-       <h1>Give me some information about the job you want</h1>
+       <h4>Give me some information about the job you want</h4>
        <form>
          <div>
            <label htmlFor="companies">Companies: </label>

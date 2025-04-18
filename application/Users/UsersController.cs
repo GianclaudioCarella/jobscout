@@ -18,6 +18,17 @@ public class UsersController : Controller
         _userLogin = userLogin;
     }
 
+    [HttpGet("getOneUser")]
+    public async Task<IActionResult> GetAllUsers()
+    {
+        var users = await _context.Users.FirstOrDefaultAsync();
+        if (users == null)
+        {
+            return NotFound("No users found.");
+        }
+        return Ok(users.FirstName);
+    }
+
     [HttpGet("getuser")]
     public async Task<IActionResult> GetUser(string userName)
     {

@@ -1,6 +1,10 @@
 {
   "name": "JobScout",
   "short_name": "JobScout",
+  "display": "fullscreen",
+  "start_url": ".",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
   "icons": [
     {
       "src": "/icon/favicon.ico/web-app-manifest-192x192.png",
@@ -14,9 +18,5 @@
       "type": "image/png",
       "purpose": "maskable"
     }
-  ],
-  "start_url": ".",
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  ]
 }

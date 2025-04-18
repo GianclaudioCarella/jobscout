@@ -23,11 +23,60 @@
     </Content>
     <Content Update="appsettings.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-    
-    </ItemGroup>
+    </Content>  
+  </ItemGroup>
 
-    <Target Name="CopyFolder" AfterTargets="Build">
-      <Exec Command="robocopy ../presentation/public $(OutputPath)wwwroot" />
+  
+  <Target Name="CopyDirectory" AfterTargets="Build">
+    <ItemGroup>
+      <FilesToCopy Include="./wwwroot\**" />
+    </ItemGroup>
+    <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(OutputPath)wwwroot" />
+	<ItemGroup>
+		<FilesToCopy Include="./wwwroot\**\static\js" />
+	</ItemGroup>
+	<Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(OutputPath)wwwroot/static/js" />
+	  <ItemGroup>
+		  <FilesToCopy Include="./wwwroot\static\css\*" />
+	  </ItemGroup>
+	  <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(OutputPath)wwwroot/static/css" />
+	  <ItemGroup>
+		  <FilesToCopy Include="./wwwroot\**\static\image*" />
+	  </ItemGroup>
+	  <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(OutputPath)wwwroot/static/image" />
+  </Target>
+
+  <!--<Target Name="CopyDirectory" AfterTargets="Build">
+    <Exec Command="robocopy ./wwwroot/static $(OutputPath)wwwroot/static" />
+  </Target>-->
+
+
+  <!-- <Target Name="CopyDirectory" AfterTargets="Build">
+    <ItemGroup>
+      <FilesToCopy Include="./wwwroot/static/css*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(OutputPath)wwwroot/static/css" />
+  </Target> -->
+
+  <!-- <Target Name="CopyDirectory" AfterTargets="Build">
+    <ItemGroup>
+      <FilesToCopy Include="./wwwroot/static/js*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(OutputPath)wwwroot/static/js" />
+  </Target>
+
+  <Target Name="CopyDirectory" AfterTargets="Build">
+    <ItemGroup>
+      <FilesToCopy Include="./wwwroot/static/media*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(OutputPath)wwwroot/static/media" />
+  </Target> -->
+  
+
+    <!-- <Target Name="CopyFiles" AfterTargets="Build">
+      <Copy SourceFiles="../presentation/public/favicon.ico" DestinationFolder="$(OutputPath)wwwroot" />
     </Target>
+    <Target Name="CopyFiles" AfterTargets="Build">
+      <Copy SourceFiles="../presentation/public/index.html" DestinationFolder="$(OutputPath)wwwroot" />
+    </Target> -->
 </Project>

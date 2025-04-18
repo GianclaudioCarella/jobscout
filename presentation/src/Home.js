@@ -11,7 +11,7 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('jobscout-cwbfbhdaa7ewfxbh.spaincentral-01.azurewebsites.net/api/Users/getOneUser');
+        const response = await axios.get('https://jobscout-cwbfbhdaa7ewfxbh.spaincentral-01.azurewebsites.net/api/Users/getOneUser');
         setData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);

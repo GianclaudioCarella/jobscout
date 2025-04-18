@@ -29,7 +29,7 @@ function App() {
  return (
    <Router>
      <Routes>
-       <Route path="/index.html" element={<Home />} />
+       <Route path="/" element={<Home />} />
        <Route path="/form" element={<FormPage />} />
      </Routes>
    </Router>

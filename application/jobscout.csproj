@@ -49,4 +49,5 @@
 	  </ItemGroup>
 	  <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(OutputPath)wwwroot/static/image" />
   </Target>
+
 </Project>

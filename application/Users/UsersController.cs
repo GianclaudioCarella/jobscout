@@ -26,7 +26,7 @@ public class UsersController : Controller
         // {
         //     return NotFound("No users found.");
         // }
-        return Ok("Gianclaudio is the best developer in the world.");
+        return Ok("Gianclaudio");
     }
 
     [HttpGet("getuser")]

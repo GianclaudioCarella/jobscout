@@ -21,12 +21,12 @@ public class UsersController : Controller
     [HttpGet("getOneUser")]
     public async Task<IActionResult> GetAllUsers()
     {
-        var users = await _context.Users.FirstOrDefaultAsync();
-        if (users == null)
-        {
-            return NotFound("No users found.");
-        }
-        return Ok(users.FirstName);
+        // var users = await _context.Users.FirstOrDefaultAsync();
+        // if (users == null)
+        // {
+        //     return NotFound("No users found.");
+        // }
+        return Ok("Gianclaudio is the best developer in the world.");
     }
 
     [HttpGet("getuser")]

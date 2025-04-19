@@ -35,6 +35,12 @@ public class UsersController : Controller
         var user = await _context.Users.Where(u => u.Username == userName).FirstOrDefaultAsync();
         return Ok(user);
     }
+
+    [HttpPost("migrate")]
+    public async void Migrate()
+    {
+        _context.Migrate();
+    }
     
     [HttpPost("register")]
     public async Task<IActionResult> Register(User user)

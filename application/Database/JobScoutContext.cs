@@ -9,5 +9,10 @@ public class JobScoutDbContext : DbContext
     public JobScoutDbContext(DbContextOptions<JobScoutDbContext> options) : base(options) { }
 
     public DbSet<User> Users { get; set; }
+
+    public void Migrate()
+    {
+        Database.Migrate();
+    }
 }
 

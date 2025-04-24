@@ -1,65 +1,123 @@
-using jobscout.Models;
-using jobscout.Database;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using jobscout.Database;
+using jobscout.Models;
 
-namespace jobscout.Users;
-
-[ApiController]
-[Route("api/[controller]")]
-public class UsersController : Controller
+namespace jobscout.Users
 {
-    private readonly JobScoutDbContext _context;
-    private readonly ILoginUser _userLogin;
+    [Route("api/[controller]")]
+    [ApiController]
+    public class UsersController : ControllerBase
+    {
+        private readonly JobScoutDbContext _context;
 
-    public UsersController(JobScoutDbContext context, ILoginUser userLogin)
-    {
-        _context = context;
-        _userLogin = userLogin;
-    }
-
-    [HttpGet("getOneUser")]
-    public async Task<IActionResult> GetAllUsers()
-    {
-        // var users = await _context.Users.FirstOrDefaultAsync();
-        // if (users == null)
-        // {
-        //     return NotFound("No users found.");
-        // }
-        return Ok("Gianclaudio");
-    }
-
-    [HttpGet("getuser")]
-    public async Task<IActionResult> GetUser(string userName)
-    {
-        var user = await _context.Users.Where(u => u.Username == userName).FirstOrDefaultAsync();
-        return Ok(user);
-    }
-
-    [HttpPost("migrate")]
-    public async void Migrate()
-    {
-        _context.Migrate();
-    }
-    
-    [HttpPost("register")]
-    public async Task<IActionResult> Register(User user)
-    {
-        _context.Users.Add(user);
-        await _context.SaveChangesAsync();
-        return Ok(user);
-    }
-
-    [HttpPost("login")]
-    public async Task<IActionResult> Login(string email, string password)
-    {
-        if(string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+        public UsersController(JobScoutDbContext context)
         {
-            return BadRequest("Email and password are required.");
+            _context = context;
         }
 
-        var user = await _userLogin.Handle(new LoginUser.Request(email, password));
+        // GET: api/Users2
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        {
+            return await _context.Users.ToListAsync();
+        }
 
-        return Ok(user);
+        // GET: api/Users2/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetUser(Guid id)
+        {
+            var user = await _context.Users.FindAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return user;
+        }
+
+        // get user by email
+        [HttpGet("email/{email}")]
+        public async Task<ActionResult<User>> GetUserByEmail(string email)
+        {
+            //var emailCleaned = email.Replace("%40", "@");
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return user;
+        }
+
+        // PUT: api/Users2/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutUser(Guid id, User user)
+        {
+            if (id != user.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(user).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!UserExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // POST: api/Users2
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<User>> PostUser(User user)
+        {
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+        }
+
+        // DELETE: api/Users2/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(Guid id)
+        {
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        private bool UserExists(Guid id)
+        {
+            return _context.Users.Any(e => e.Id == id);
+        }
     }
 }

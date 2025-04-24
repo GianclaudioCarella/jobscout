@@ -13,10 +13,9 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllersWithViews();
+
 builder.Services.AddDbContext<JobScoutDbContext>(options =>
     options.UseNpgsql(connectionString));
-// builder.Services.AddDbContext<JobScoutDbContext>(options =>
-//     options.UseNpgsql(builder.Configuration.GetConnectionString("JobScoutDbContext")));
 
 var app = builder.Build();
 
@@ -38,11 +37,11 @@ app.UseStaticFiles();
 app.UseRouting();
 
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers();
-    endpoints.MapFallbackToFile("Index.html");
-});
+//app.UseEndpoints(endpoints =>
+//{
+//    endpoints.MapControllers();
+//    endpoints.MapFallbackToFile("Index.html");
+//});
 
-
+app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000"));
 app.Run();

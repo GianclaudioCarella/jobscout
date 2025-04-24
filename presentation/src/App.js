@@ -1,14 +1,14 @@
-import Home from './Home';
-import FormPage from './FormPage';
+import Home from './pages/Home';
+import Register from './pages/Register';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
  return (
    <Router>
      <Routes>
        <Route path="/" element={<Home />} />
-       <Route path="/form" element={<FormPage />} />
+       <Route path="/register" element={<Register />} />
      </Routes>
    </Router>
  );

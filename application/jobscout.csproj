@@ -32,6 +32,10 @@
     </Content>  
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
   
   <Target Name="CopyDirectory" AfterTargets="Build">
     <ItemGroup>

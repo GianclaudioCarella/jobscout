@@ -36,12 +36,11 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
-
-//app.UseEndpoints(endpoints =>
-//{
-//    endpoints.MapControllers();
-//    endpoints.MapFallbackToFile("Index.html");
-//});
+app.UseEndpoints(endpoints =>
+{
+   endpoints.MapControllers();
+   endpoints.MapFallbackToFile("Index.html");
+});
 
 app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000"));
 app.Run();

@@ -1,5 +1,5 @@
-import Home from './pages/Home';
-import Register from './pages/Register';
+import Home from './pages/Home.tsx';
+import Register from './pages/Register.tsx';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 

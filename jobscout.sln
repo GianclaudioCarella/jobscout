@@ -6,38 +6,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jobscout", "application\job
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "application", "application", "{592BF94B-1822-41B6-942F-46104E26319F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "presentation", "presentation", "{913081B0-1B33-487A-97E6-EF73AA733FA9}"
-	ProjectSection(SolutionItems) = preProject
-		presentation\.env = presentation\.env
-		presentation\.gitignore = presentation\.gitignore
-		presentation\package-lock.json = presentation\package-lock.json
-		presentation\package.json = presentation\package.json
-		presentation\README.md = presentation\README.md
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7077A4E0-93F0-4C66-8810-B3E71513AFAD}"
-	ProjectSection(SolutionItems) = preProject
-		presentation\src\App.css = presentation\src\App.css
-		presentation\src\App.js = presentation\src\App.js
-		presentation\src\App.test.js = presentation\src\App.test.js
-		presentation\src\index.css = presentation\src\index.css
-		presentation\src\index.js = presentation\src\index.js
-		presentation\src\logo.svg = presentation\src\logo.svg
-		presentation\src\reportWebVitals.js = presentation\src\reportWebVitals.js
-		presentation\src\robo.jpeg = presentation\src\robo.jpeg
-		presentation\src\setupTests.js = presentation\src\setupTests.js
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{D49BBB5B-1F00-411A-8845-27BE7E9E67D4}"
-	ProjectSection(SolutionItems) = preProject
-		presentation\src\img\agent.jpeg = presentation\src\img\agent.jpeg
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6F4AED0D-963F-49E3-A6D9-A91781824530}"
-	ProjectSection(SolutionItems) = preProject
-		.github\workflows\main_jobscout.yml = .github\workflows\main_jobscout.yml
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,8 +22,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{26ABC277-3DCE-218D-326B-DB49A29692A7} = {592BF94B-1822-41B6-942F-46104E26319F}
-		{7077A4E0-93F0-4C66-8810-B3E71513AFAD} = {913081B0-1B33-487A-97E6-EF73AA733FA9}
-		{D49BBB5B-1F00-411A-8845-27BE7E9E67D4} = {7077A4E0-93F0-4C66-8810-B3E71513AFAD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CF20013D-A86A-4305-9DB8-75FA6962D480}

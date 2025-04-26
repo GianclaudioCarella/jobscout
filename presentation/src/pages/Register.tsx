@@ -25,7 +25,7 @@ const Register: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
     // Add your form submission logic here, e.g., sending data to an Azure Function or API

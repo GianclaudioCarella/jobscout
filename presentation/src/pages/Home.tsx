@@ -3,19 +3,20 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+// import { Button } from "@/components/ui/button";
 
 const Home: React.FC = () => {
   const [userData, setUserData] = useState<{ username: string; companies: string; jobTitles: string } | null>(null);
   const [userEmail, setUserEmail] = useState('');
 
-  const fechUserData = async (emailInput) => {
+  const fechUserData = async (emailInput: string) => {
     try {
       console.log('emailInput:', emailInput);
       setUserEmail(emailInput)
       if (emailInput === '') {
         return;
       }
-      const url = "https://localhost:7205/api/Users/email/" + emailInput;
+      const url = "http://jobscout-agent.com/api/Users/email/" + emailInput;
       console.log('value:', url);
       const response = await axios.get(url);
       setUserData(response.data);
@@ -42,6 +43,7 @@ const Home: React.FC = () => {
   }, []);
 
   return (
+    <>
     <div className="App">
       <header className="App-header">
 
@@ -63,6 +65,7 @@ const Home: React.FC = () => {
             <div>
               <label>Email: </label>
               <input type="text" id="email" name="email" placeholder="Enter your email" />
+              {/* <Button>Button</Button> */}
               <button onClick={() =>
                 {const emailInput = document.getElementById('email') as HTMLInputElement | null;
                 if (emailInput) {
@@ -94,6 +97,7 @@ const Home: React.FC = () => {
       <p>Trust in robots. Don't trust in Headhunters.</p>
     </div>
   );
-}
+  </>
+)}
 
 export default Home;

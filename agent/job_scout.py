@@ -53,10 +53,6 @@ preferences = {
   }
 }
 
-# Replace with your actual API key and search engine ID
-API_KEY = "AIzaSyCn22WuArs4Icz_OJRIJnbrbDNmg8Nu84M"
-SEARCH_ENGINE_ID = "504c84fbfee704525"
-
 def detect_known_job_board(html):
     soup = BeautifulSoup(html, "html.parser")
     links = soup.find_all("a")

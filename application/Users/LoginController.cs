@@ -10,18 +10,18 @@ namespace jobscout.Users
     [ApiController]
     public class LoginController : ControllerBase
     {
-        private readonly JobScoutDbContext _context;
+        private readonly ApplicationDbContext _context;
         
-        public LoginController(JobScoutDbContext context)
+        public LoginController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: login/{email}/{password}
-        [HttpGet("login/{email}/{password}")]
-        public async Task<ActionResult<User>> GetUserByEmailAndPassword(string email, string password)
+        // GET: login/{email}
+        [HttpGet("login/{email}")]
+        public async Task<ActionResult<User>> GetUserByEmailAndPassword(string email)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email && u.Password == password);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
 
             if (user == null)
             {

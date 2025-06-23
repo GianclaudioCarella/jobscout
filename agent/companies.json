@@ -1,0 +1,22 @@
+{
+  "Spotify": {
+    "job_board": "custom",
+    "domain": "www.lifeatspotify.com",
+    "careers_url": "https://www.lifeatspotify.com/jobs"
+  },
+  "Headspace": {
+    "job_board": "greenhouse",
+    "domain": "boards.greenhouse.io",
+    "careers_url": "https://boards.greenhouse.io/hs"
+  },
+  "Notion": {
+    "job_board": "greenhouse",
+    "domain": "job-boards.greenhouse.io",
+    "careers_url": "https://job-boards.greenhouse.io/notion"
+  },
+  "": {
+    "job_board": "custom",
+    "domain": "www.google.com",
+    "careers_url": "https://www.google.com/about/careers/applications/"
+  }
+}

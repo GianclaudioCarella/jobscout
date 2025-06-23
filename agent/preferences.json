@@ -1,0 +1,13 @@
+{
+  "companySearch": {
+    "companies": [""],
+    "roles": ["Product Designer", "UX/UI Designer", "UX Designer", "Senior Product Designer","Senior UX/UI Designer"],
+    "filters": ["remote", "senior"],
+    "date": "last 7 days"
+  },
+  "discoverySearch": {
+    "roles": ["Product Designer", "UX Designer", "UX/UI Designer", "Senior Product Designer", "Senior UX/UI Designer" ],
+    "filters": ["remote", "Spain", "Barcelona"],
+    "date": "last 7 days"
+  }
+}

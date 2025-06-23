@@ -7,9 +7,9 @@ namespace jobscout.Migrations
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MigrationController(JobScoutDbContext context) : ControllerBase
+    public class MigrationController(ApplicationDbContext context) : ControllerBase
     {
-        private readonly JobScoutDbContext _context = context;
+        private readonly ApplicationDbContext _context = context;
 
         [HttpPost("Execute")]
         public void Migrate()

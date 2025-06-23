@@ -2,7 +2,7 @@ using jobscout.Database;
 using jobscout.Models;
 using Microsoft.EntityFrameworkCore;
 
-public sealed class UserRepository(JobScoutDbContext dbContext) : IUserRepository
+public sealed class UserRepository(ApplicationDbContext dbContext) : IUserRepository
 {
     public async Task<User?> GetUserByIdAsync(int id)
     {

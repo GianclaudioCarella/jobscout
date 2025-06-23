@@ -14,9 +14,9 @@ namespace jobscout.Users
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly JobScoutDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public UsersController(JobScoutDbContext context)
+        public UsersController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -62,28 +62,28 @@ namespace jobscout.Users
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(Guid id, User user)
         {
-            if (id != user.Id)
-            {
-                return BadRequest();
-            }
+            // if (id != user.Id)
+            // {
+            //     return BadRequest();
+            // }
 
-            _context.Entry(user).State = EntityState.Modified;
+            // _context.Entry(user).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            // try
+            // {
+            //     await _context.SaveChangesAsync();
+            // }
+            // catch (DbUpdateConcurrencyException)
+            // {
+            //     if (!UserExists(id))
+            //     {
+            //         return NotFound();
+            //     }
+            //     else
+            //     {
+            //         throw;
+            //     }
+            // }
 
             return NoContent();
         }
@@ -117,7 +117,7 @@ namespace jobscout.Users
 
         private bool UserExists(Guid id)
         {
-            return _context.Users.Any(e => e.Id == id);
+            return false; //return _context.Users.Any(e => e.Id == id);
         }
     }
 }

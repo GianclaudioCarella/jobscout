@@ -12,7 +12,7 @@ using jobscout.Database;
 
 namespace jobscout.Migrations
 {
-    [DbContext(typeof(JobScoutDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20250415125918_InitialCreation")]
     partial class InitialCreation
     {

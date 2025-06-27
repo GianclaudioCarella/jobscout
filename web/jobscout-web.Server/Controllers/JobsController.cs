@@ -19,15 +19,30 @@ namespace jobscout_web.Server.Controllers
         }
 
         [HttpGet(Name = "GetJobs")]
-        public IEnumerable<JobScoutResult> Get(string jobTitle, string location, string companies)
+        public IEnumerable<JobScoutResult> Get(string jobTitle, string location, string? companies)
         {
-            String apiKey = "";
+            _logger.LogInformation("GetJobs called with jobTitle: {jobTitle}, location: {location}, companies: {companies}", jobTitle, location, companies);
+
+            String apiKey = "0c4a11d292d690cf6b2856db1752e399c726779efc3696189749deb66e9f6b91";
+
+            var query = "Jobs in " + location;
+
+            if (!string.IsNullOrEmpty(jobTitle))
+            {
+                query = query + " for " + jobTitle;
+            }
+
+            if (string.IsNullOrEmpty(jobTitle))
+            {
+                query = query + " in these companies: " + companies;
+            }
 
             Hashtable ht = new Hashtable();
-            ht.Add("q", "Jobs in " + location + " for " + jobTitle + "in these companies: " + companies);
+            ht.Add("q", query);
             ht.Add("location", location);
             ht.Add("hl", "en");
             ht.Add("gl", "us");
+            //ht.Add("engine", "google_jobs ");
             ht.Add("google_domain", "google.com");
 
             StringBuilder stringBuilder = new StringBuilder();
@@ -51,13 +66,15 @@ namespace jobscout_web.Server.Controllers
                 Console.WriteLine(ex.ToString());
             }
 
+            _logger.LogInformation("Found {count} job results.", jobScoutResultsList.Count);
+
             return jobScoutResultsList;
         }
     }
 
     public class JobScoutResult
     {
-        public string Title { get; set; }
-        public string Url { get; set; }
+        public string? Title { get; set; }
+        public string? Url { get; set; }
     }
 }

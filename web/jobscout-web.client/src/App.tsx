@@ -15,21 +15,20 @@ function App() {
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        
+        populateJobscoutData();
     }, []);
 
     function handleButtonClick() {
         setIsLoading(true);
-         populateJobscoutData();
-        setIsLoading(false);
-        //useEffect();
+        populateJobscoutData();
     }
 
-    const contents = isLoading
+    const contents = 
+        isLoading
         ? <p><em>Loading...</em></p>
         : jobscoutResults === undefined
-            ? <p><em>Waiting</em></p>
-            : <table className="table table-striped" aria-labelledby="tableLabel">
+            ? <p><em></em></p>
+            : <table className="table table-striped full-width-table" aria-labelledby="tableLabel">
                 <thead>
                     <tr>
                         <th>Title</th>
@@ -54,7 +53,7 @@ function App() {
         <div>
             <h1 id="tableLabel">Welcome to Jobscout</h1>
             <p>Tool to help you to find your next job.</p>
-            <div>
+            <div className="input-group mb-3">
                 <input
                     type="text"
                     placeholder="Job Title"
@@ -85,10 +84,11 @@ function App() {
             location,
             companies
         });
-        const response = await fetch(`jobs?${params.toString()}`);
-        if (response.ok) {
-            const data = await response.json();
-            setJobscoutResults(data);
+            const response = await fetch(`jobs?${params.toString()}`);
+            if (response.ok) {
+                const data = await response.json();
+                setJobscoutResults(data);
+                setIsLoading(false);
         }
     }
 }

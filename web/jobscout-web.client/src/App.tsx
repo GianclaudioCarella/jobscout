@@ -84,11 +84,19 @@ function App() {
             location,
             companies
         });
+
+        try {
             const response = await fetch(`jobs?${params.toString()}`);
             if (response.ok) {
                 const data = await response.json();
                 setJobscoutResults(data);
-                setIsLoading(false);
+            } else {
+                console.error('Failed to fetch jobscout results:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error fetching jobscout results:', error);
+        } finally {
+            setIsLoading(false);
         }
     }
 }

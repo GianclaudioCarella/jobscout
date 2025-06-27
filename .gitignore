@@ -1,1 +1,3 @@
 agent/.venv
+web/jobscout-web.client/bin
+web/obj

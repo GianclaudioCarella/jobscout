@@ -1,10 +1,16 @@
-import azure.functions as func
-import datetime
 import json
-import logging
+import os
+import requests
+from urllib.parse import quote
+from bs4 import BeautifulSoup
+from datetime import datetime, timedelta
 
-
-app = func.FunctionApp()
+# --- Load company config and preferences ---
+# def load_json(path):
+#     if not os.path.exists(path):
+#         return {}
+#     with open(path, "r") as f:
+#         return json.load(f)
 
 def save_json(data, path):
     with open(path, "w") as f:
@@ -167,7 +173,7 @@ def search_google(query):
     return results
 
 # --- MAIN ---
-def perform_search(query):
+def perform_search():
     # Replace this with your actual search logic
     print("Performing job search...")
     company_names = preferences.get("companySearch", {}).get("companies", [])
@@ -234,23 +240,19 @@ def perform_search(query):
             print("🚫 No jobs found for this board.")
         print("\n" + "=" * 40 + "\n")
 
-@app.route(route="HttpJobScout", auth_level=func.AuthLevel.ANONYMOUS)
-def HttpJobScout(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request.')
+def main_menu():
+    while True:
+        print("\nJobScout Menu")
+        print("1. Search for jobs")
+        print("2. Exit")
+        choice = input("Enter your choice (1 or 2): ").strip()
+        if choice == '1':
+            perform_search()
+        elif choice == '2':
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter 1 or 2.")
 
-    query = req.params.get('query')
-    if not query:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            req_body = {}
-        query = req_body.get('query')
-
-    if query:
-        result = perform_search(query)
-        return func.HttpResponse(result, status_code=200)
-    else:
-        return func.HttpResponse(
-            "Please pass a 'query' parameter in the query string or in the request body.",
-            status_code=400
-        )
+if __name__ == "__main__":
+    main_menu()

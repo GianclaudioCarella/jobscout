@@ -23,7 +23,7 @@ namespace jobscout_web.Server.Controllers
         {
             _logger.LogInformation("GetJobs called with jobTitle: {jobTitle}, location: {location}, companies: {companies}", jobTitle, location, companies);
 
-            String apiKey = "0c4a11d292d690cf6b2856db1752e399c726779efc3696189749deb66e9f6b91";
+            String apiKey = "";
 
             var query = "Jobs in " + location;
 
